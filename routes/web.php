@@ -35,7 +35,6 @@ Route::get('/price', [priceController::class, 'price'])->name('price');
 Route::get('/testimonals', [testimonalsController::class, 'testimonals'])->name('testimonals');
 Route::get('/appointment', [appointmentController::class, 'appointment'])->name('appointment');
 Route::get('/doctors', [doctorsController::class, 'doctors'])->name('doctors');
-
 //admin
 Route::get('/login', [AdminController::class, 'admin_login'])->name('login');
 Route::post('/login', [AdminController::class, 'adminlogin'])->name('login');
@@ -46,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/patients', [AdminController::class, 'index'])->name('patients.index');
     Route::get('/edit/{id}', [PatientController::class, 'edit'])->name('patient.edit');
     Route::put('/patient/{id}', [PatientController::class, 'update'])->name('patient.update');
-
     Route::get('/doctorlist', [doctorsController::class, 'doctorlist'])->name('admin.doctorlist');
     Route::get('/createdoctor', [doctorsController::class, 'createdoctor'])->name('admin.createdoctor');
     Route::post('/doctorstore', [doctorsController::class, 'doctorstore'])->name('admin.doctorstore');
@@ -60,10 +58,17 @@ Route::middleware('auth')->group(function () {
 
 });
 
+//doctor
 Route::get('/doctorlogin', [doctorsController::class, 'doctorlogin'])->name('doctorlogin');
 Route::middleware('auth')->group(function () {
     Route::get('/doctorhomepage', [doctorsController::class, 'doctorhomepage'])->name('doctorhomepage');
+    Route::get('/chngepass', [doctorsController::class, 'chngepass'])->name('chngepass');
+    Route::post('/password-update', [doctorsController::class, 'updatePassword'])->name('password.update');
+    Route::get('/dprofile', [doctorsController::class, 'dprofile'])->name('dprofile');
+    Route::get('/dappointment', [doctorsController::class, 'dappointment'])->name('dappointment');
+
 });
+
 //patient
 Route::get('/signup', [PatientController::class, 'signup'])->name('signup');
 Route::post('/patientstore', [PatientController::class, 'patientstore'])->name('patientstore');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Doctor;
+use Auth;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Add this line
 use Illuminate\Support\Facades\Storage;
@@ -104,4 +106,56 @@ class doctorsController extends Controller
         }
     }
 
+    public function chngepass()
+    {
+        return view('doctor.chngepass');
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The provided password does not match your current password.']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('status', 'Password changed successfully!');
+    }
+
+    public function dprofile()
+    {
+        $doctorProfile = DB::table('doctors')
+            ->join('users', 'doctors.user_id', '=', 'users.id')
+            ->select('doctors.*', 'users.*')
+            ->where('users.id', auth()->id())
+            ->first();
+        return view('doctor.dprofiles', compact('doctorProfile'));
+    }
+
+
+    public function dappointment()
+    {
+
+        $appointments = DB::table('appointments')
+        ->leftJoin('users as doc', 'appointments.doctor_id', '=', 'doc.id')
+        ->leftJoin('users as pat', 'appointments.patient_id', '=', 'pat.id') 
+        ->select(
+            'appointments.*',
+            'pat.*' // add more patient fields as needed
+        )
+        ->where('appointments.doctor_id', auth()->id())
+        ->get();
+    
+        return view('doctor.dappointments',compact('appointments'));
+
+    }
 }
