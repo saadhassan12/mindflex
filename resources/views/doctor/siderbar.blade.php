@@ -16,13 +16,13 @@
     <div class="dashboard-widget">
         <nav class="dashboard-menu">
             <ul>
-                <li class="active">
+                <li >
                     <a href="{{ route('doctorhomepage') }}">
                         <i class="fas fa-columns"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="{{ route('dappointment') }}">
                         <i class="fas fa-calendar-check"></i>
                         <span>Appointments</span>
@@ -62,12 +62,23 @@
                         <span>Change Password</span>
                     </a>
                 </li>
-                <li>
+             <li>
+    <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">
+        @csrf
+        <button type="submit" style="border: none; background: none; padding: 20px 16px; margin: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center;     font-size: 16px;
+    margin-right: 10px;
+    width: 16px">
+            <i class="fas fa-sign-out-alt"></i>
+            <span style="margin-left: 16px;">Logout</span>
+        </button>
+    </form>
+</li>
+                {{-- <li>
                     <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">
                         @csrf
                         <button class="dropdown-item" type="submit">Logout</button>
                     </form>
-                </li>
+                </li> --}}
             </ul>
         </nav>
     </div>

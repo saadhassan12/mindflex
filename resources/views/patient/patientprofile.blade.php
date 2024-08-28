@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li>
-                        <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">
+                        <form action="{{ route('adminlogout') }}" method="POST" style="; border: none; background: none; padding: 14px 16px; margin: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center; font-size: 16px;">
                             @csrf
                             <button class="dropdown-item" type="submit">
                                 <i class="fas fa-sign-out-alt"></i>
@@ -76,6 +76,15 @@
                             </button>
                         </form>
                     </li>
+                    {{-- <li>
+                        <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button class="dropdown-item" type="submit">
+                                <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                            </button>
+                        </form>
+                    </li> --}}
                 </ul>
             </nav>
         </div>
