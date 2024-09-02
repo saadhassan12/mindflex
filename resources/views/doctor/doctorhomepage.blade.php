@@ -143,7 +143,7 @@
 																</tr>
 															</thead>
 															<tbody>
-																<tr>
+																{{-- <tr>
 																	<td>
 																		<h2 class="table-avatar">
 																			<a href="patient-profile.html"
@@ -178,7 +178,7 @@
 																			</a>
 																		</div>
 																	</td>
-																</tr>
+																</tr> --}}
 																<tr>
 																	<td>
 																		<h2 class="table-avatar">
@@ -188,7 +188,7 @@
 																					src="assets/img/patients/patient1.jpg"
 																					alt="User Image"></a>
 																			<!-- idhr pateint ki profile ka page attach krna hy just profile -->
-																			<a href="patient-profile.html">Eyiena
+																			<a href="patient-profile.html">Sara
 																				<span>#PT0001</span></a>
 																		</h2>
 																	</td>

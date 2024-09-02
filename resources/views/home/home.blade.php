@@ -65,7 +65,7 @@
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome To Mindflex</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Your Trusted Partner In Rehabilitation</h1>
                             <a href="appointment.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Appointment</a>
-                            <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                            <a href="{{ route('contact') }}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         </div>
                         <br>
                         <!-- <a href="loginform.html" class="btn btn-primary py-2 px-4 ms-3" style="background-color: #FF5733; color: white;">Join Now</a> -->
-                        <a href="loginform.html" class="btn btn-primary py-2 px-4 ms-3 custom-button">Join Now</a>
+                        <a href="{{ route('patientlogin') }}" class="btn btn-primary py-2 px-4 ms-3 custom-button">Join Now</a>
 
 <!-- CSS for hover effect -->
 <style>
@@ -379,7 +379,7 @@
 
 
     <!-- Pricing Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    {{-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
@@ -446,12 +446,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Pricing End -->
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid bg-primary bg-testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
+    {{-- <div class="container-fluid bg-primary bg-testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -472,7 +472,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Testimonial End -->
 
 
@@ -582,7 +582,7 @@
 
     <!-- Newsletter Start -->
     
-    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
+    {{-- <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
         <div class="container">
             <div class="bg-primary p-5">
                 <form class="mx-auto" style="max-width: 600px;">
@@ -594,7 +594,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Newsletter End -->
 
 @include('footer')

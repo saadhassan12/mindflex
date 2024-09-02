@@ -43,10 +43,10 @@
 
 									<!-- /Tab Menu -->
 									<section class="main">
-										<div class="main-top">
+										{{-- <div class="main-top">
 											<h1>Welcome Back! </h1><br>
 											<i class="fas fa-user-cog"></i>
-										</div>
+										</div> --}}
 										<div class="main-skills">
 											<div class="card">
 												<i class="fas fa-dumbbell"></i>

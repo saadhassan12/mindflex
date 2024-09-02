@@ -15,10 +15,10 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu m-0">
-                    <a href="{{ route('price') }}" class="nav-item nav-link">price</a>
+                    {{-- <a href="{{ route('price') }}" class="nav-item nav-link">price</a> --}}
                     <a href="{{ route('doctors') }}" class="nav-item nav-link">Our Doctors</a>
                     <a href="{{ route('testimonals') }}" class="nav-item nav-link">Testimonals</a>
-                    <a href="{{ route('appointment') }}" class="nav-item nav-link">Appointment</a>
+                    {{-- <a href="{{ route('appointment') }}" class="nav-item nav-link">Appointment</a> --}}
                 </div>
             </div>
             <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>

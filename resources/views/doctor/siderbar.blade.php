@@ -35,12 +35,12 @@
                     </a>
                 </li>
                
-                <li>
+                {{-- <li>
                     <a href="invoices.html">
                         <i class="fas fa-file-invoice"></i>
                         <span>Invoices</span>
                     </a>
-                </li>
+                </li> --}}
                
                 <li>
                     <a href="chat-doctor.html">

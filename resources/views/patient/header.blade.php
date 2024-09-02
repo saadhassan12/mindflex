@@ -47,12 +47,15 @@
     <ul class="nav header-navbar-rht">
       <li class="nav-item contact-item">
         <div class="header-contact-img">
-          <i class="far fa-hospital"></i>							
+        					
         </div>
-        <div class="header-contact-detail">
+        <li class="nav-item welcome-item">
+          <p class="welcome-text">Welcome, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
+        </li>
+        {{-- <div class="header-contact-detail">
           <p class="contact-header">Contact</p>
           <p class="contact-info-header"> +1 315 369 5943</p>
-        </div>
+        </div> --}}
       </li>
       
       <!-- User Menu -->

@@ -6879,3 +6879,29 @@ html.menu-opened body {
   
 	/* </span> */
   
+
+
+	/* Style for the welcome message */
+.welcome-item {
+	display: flex;
+	align-items: center; /* Center the text vertically */
+	padding: 0 15px; /* Add horizontal padding */
+  }
+  
+  .welcome-text {
+	font-size: 16px; /* Adjust the font size */
+	color: #333; /* Set the text color */
+	font-weight: 500; /* Set the font weight */
+	margin: 0; /* Remove default margin */
+  }
+  
+  /* Optional: Adjust the nav items for better spacing */
+  .header-navbar-rht .nav-item {
+	margin: 0 10px; /* Add spacing between nav items */
+  }
+  
+  /* Optional: Change the font style on hover */
+  .header-navbar-rht .nav-item:hover .welcome-text {
+	color: #20c997; /* Change color on hover */
+	text-decoration: underline; /* Underline on hover */
+  }

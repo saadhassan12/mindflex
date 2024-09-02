@@ -34,7 +34,7 @@
                         <li><a href="{{ route('dappointment') }}">Appointments</a></li>
                         <li><a href="my-patients.html">Patients List</a></li>
                         <li><a href="chat-doctor.html">Chat</a></li>
-                        <li><a href="invoices.html">Invoices</a></li>
+                        {{-- <li><a href="invoices.html">Invoices</a></li> --}}
                         <li><a href="{{ route('dprofile') }}">Profile Settings</a></li>
                         <li><a href="reviews.html">Reviews</a></li>
                     </ul>
@@ -45,7 +45,10 @@
             </ul>
         </div>
         <ul class="nav header-navbar-rht">
-            <li class="nav-item contact-item">
+            <li class="nav-item welcome-dr">
+                <span class="nav-link">Welcome, Dr. {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+            </li>
+            {{-- <li class="nav-item contact-item">
                 <div class="header-contact-img">
                     <i class="far fa-hospital"></i>
                 </div>
@@ -53,7 +56,7 @@
                     <p class="contact-header">Contact</p>
                     <p class="contact-info-header"> +1 315 369 5943</p>
                 </div>
-            </li>
+            </li> --}}
 
             <!-- User Menu -->
             <li class="nav-item dropdown has-arrow logged-item">
