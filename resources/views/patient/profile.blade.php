@@ -46,67 +46,64 @@
 					<div class="col-md-7 col-lg-8 col-xl-9">
 						<div class="card">
 							<div class="card-body">
-
+					
 								<!-- Profile Settings Form -->
 								<div class="container">
 									<h2 class="text-center">Patient</h2>
-
-									<div class="form-group">
-										<label for="firstName">First Name:</label>
-										<input type="text" class="form-control" id="first_name" name="first_name"
-											value="{{ auth()->user()->first_name }}" readonly>
-										<small class="form-text error" id="firstNameError"></small>
-									</div>
-
-									<div class="form-group">
-										<label for="lastName">Last Name:</label>
-										<input type="text" class="form-control" id="last_name" name="last_name"
-											value="{{ auth()->user()->last_name }}" readonly>
-										<small class="form-text error" id="lastNameError"></small>
-									</div>
-
-									<div class="form-group">
-										<label for="age">Age:</label>
-										<input type="number" class="form-control" id="age" name="age"
-											value="{{ auth()->user()->age  }}" readonly>
-										<small class="form-text error" id="ageError"></small>
-									</div>
-
-									<div class="form-group">
-										<label for="username">Username:</label>
-										<input type="text" class="form-control" id="user_name" name="user_name"
-											value="{{ auth()->user()->user_name }}" readonly>
-										<small class="form-text error" id="usernameError"></small>
-									</div>
-
-									<div class="form-group">
-										<label for="email">Email:</label>
-										<input type="email" class="form-control" id="email" name="email"
-											value="{{ auth()->user()->email  }}" readonly>
-										<small class="form-text error" id="emailError"></small>
-									</div>
-
-
-
-									<input type="hidden" name="type" value="patient" />
-									<div class="form-group">
-										<label for="gender">Gender:</label>
-										<select class="form-control" id="gender" name="gander" readonly>
-
-											<option value="Male" {{ auth()->user()->gander }}>Male
-											</option>
-
-										</select>
-										<small class="form-text error" id="genderError"></small>
-									</div>
-									<a href="{{ route('patientview') }}" class="btn btn-primary"
-										style="margin-top: 23px;">Back Too</a>
+					
+									<form action="{{ route('updateProfile') }}" method="POST">
+										@csrf
+									
+										<div class="form-group">
+											<label for="firstName">First Name:</label>
+											<input type="text" class="form-control" id="first_name" name="first_name" value="{{ auth()->user()->first_name }}">
+										</div>
+									
+										<div class="form-group">
+											<label for="lastName">Last Name:</label>
+											<input type="text" class="form-control" id="last_name" name="last_name" value="{{ auth()->user()->last_name }}">
+										</div>
+									
+										<div class="form-group">
+											<label for="age">Age:</label>
+											<input type="number" class="form-control" id="age" name="age" value="{{ auth()->user()->age }}">
+										</div>
+									
+										<div class="form-group">
+											<label for="username">Username:</label>
+											<input type="text" class="form-control" id="user_name" name="user_name" value="{{ auth()->user()->user_name }}">
+										</div>
+									
+										<div class="form-group">
+											<label for="email">Email:</label>
+											<input type="email" class="form-control" id="email" name="email" value="{{ auth()->user()->email }}">
+										</div>
+									
+										<div class="form-group">
+											<label for="gender">Gender:</label>
+											<select class="form-control" id="gender" name="gander">
+												<option value="Male" {{ auth()->user()->gender == 'Male' ? 'selected' : '' }}>Male</option>
+												<option value="Female" {{ auth()->user()->gender == 'Female' ? 'selected' : '' }}>Female</option>
+											</select>
+										</div>
+									
+										<div class="form-group">
+											<input type="hidden" class="form-control" id="password" name="password" value="{{ auth()->user()->password }}">
+										</div>
+										<input type="hidden" name=" type" value="patient">
+									
+										<button type="submit" class="btn btn-primary">Update</button>
+									</form>
+									
+					
 								</div>
 								<!-- /Profile Settings Form -->
-
+					
 							</div>
 						</div>
 					</div>
+					
+					
 				</div>
 			</div>
 

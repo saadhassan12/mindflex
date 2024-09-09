@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->type === 'patient'; // or whatever logic you use to define an admin
     }
+
+    public function doctor()
+{
+    return $this->hasOne(Doctor::class);
+} 
 }

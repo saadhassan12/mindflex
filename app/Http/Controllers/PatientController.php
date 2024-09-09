@@ -97,9 +97,13 @@ class PatientController extends Controller
     {
         $doctors = DB::table('users')
             ->join('doctors', 'users.id', '=', 'doctors.user_id')
+            ->join('specialities', 'doctors.specialization', '=', 'specialities.id')
             ->where('users.type', 'doctor')
-            ->select('users.*', 'doctors.*')
-            ->get();
+            ->select('users.*', 'doctors.*', 'specialities.name as speciality_name')
+            ->orderBy('specialities.name') // Order by specialities name
+            ->get()
+            ->groupBy('speciality_name');  // Group by speciality name
+
 
         return view('patient.doctorview', compact('doctors'));
     }
@@ -122,7 +126,6 @@ class PatientController extends Controller
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|min:8|confirmed',
-            'confirm_password' => 'required|same:new_password',
         ]);
 
         // Check if the old password matches
@@ -146,7 +149,7 @@ class PatientController extends Controller
             ->where('users.id', $id) // Specify the table for 'id'
             ->select('users.*', 'doctors.*')
             ->first();
-    
+
         return view('patient.booking', compact('doctors'));
     }
 
@@ -173,12 +176,12 @@ class PatientController extends Controller
     public function checkout($id)
     {
         $appointment = DB::table('appointments')
-        ->leftjoin('users', 'appointments.doctor_id', '=', 'users.id')
-        ->leftJoin('doctors', 'users.id', '=', 'doctors.user_id')
-        ->select('appointments.*', 'users.*','doctors.*')
-        ->where('appointments.id', $id)
-        ->first();
-        return view('patient.checkout',compact('appointment'));
+            ->leftjoin('users', 'appointments.doctor_id', '=', 'users.id')
+            ->leftJoin('doctors', 'users.id', '=', 'doctors.user_id')
+            ->select('appointments.*', 'users.*', 'doctors.*')
+            ->where('appointments.id', $id)
+            ->first();
+        return view('patient.checkout', compact('appointment'));
 
     }
     public function sstore(Request $request)
@@ -196,7 +199,7 @@ class PatientController extends Controller
             'cvv' => 'nullable|string|max:4',
             'terms_accept' => 'required|accepted',
             'patient_id' => 'required',
-            'doctor_id' => 'required',    
+            'doctor_id' => 'required',
         ]);
         Checkout::create($validated);
         return redirect()->route('doctorview');
@@ -204,13 +207,40 @@ class PatientController extends Controller
     public function pappointment()
     {
         $appointments = DB::table('appointments')
-        ->leftjoin('users', 'appointments.doctor_id', '=', 'users.id')
-        ->leftJoin('doctors', 'users.id', '=', 'doctors.user_id')
-        ->select('appointments.*', 'users.*','doctors.*')
-        ->where('appointments.patient_id', auth()->id()) 
-        ->get();
-        return view('patient.pappointment',compact('appointments'));
+            ->leftjoin('users', 'appointments.doctor_id', '=', 'users.id')
+            ->leftJoin('doctors', 'users.id', '=', 'doctors.user_id')
+            ->select('appointments.*', 'users.*', 'doctors.*')
+            ->where('appointments.patient_id', auth()->id())
+            ->get();
+        return view('patient.pappointment', compact('appointments'));
 
     }
+
+
+    public function updatep(Request $request)
+    {
+
+        $user = auth()->user();
+
+
+        // Update the user profile fields
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->age = $request->input('age');
+        $user->user_name = $request->input('user_name');
+        $user->email = $request->input('email');
+        $user->gander = $request->input('gander');
+
+        // Check if the password field is not empty before updating
+
+
+        // Save the user data
+        $user->save();
+
+        // Redirect or return a response
+        return redirect()->route('pprofile')->with('success', 'Profile updated successfully!');
+    }
+
+
 }
 

@@ -58,7 +58,8 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="age">Age:</label>
-                            <input type="number" class="form-control" id="age" name="age" required max="80" oninput="validateAge(this)">
+                            <input type="number" class="form-control" id="age" name="age" required max="80"
+                                oninput="validateAge(this)">
                             <small class="form-text error" id="ageError"></small>
                         </div>
                         <div class="form-group col-md-6">
@@ -96,7 +97,12 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="specialization">Specialization:</label>
-                            <input type="text" class="form-control" id="specialization" name="specialization" required>
+                            <select class="form-control" id="specialization" name="specialization" required>
+                                <option value="" disabled selected>Select Specialization</option>
+                                @foreach($specialities as $speciality)
+                                <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                                @endforeach
+                            </select>
                             <small class="form-text error" id="specializationError"></small>
                         </div>
                     </div>
@@ -135,7 +141,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="image">Doctor's Image:</label>
-                            <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+                            <input type="file" class="form-control-file" id="image" name="image" accept="image/*"
+                                required>
                             <small class="form-text error" id="imageError"></small>
                         </div>
                     </div>

@@ -42,51 +42,49 @@
 					@include('patient.patientprofile')
 					<!-- Page Content -->
 					<div class="col-md-7 col-lg-8 col-xl-9">
-						<div class="row row-grid">
-							@foreach($doctors as $doctor)
-							<div class="col-md-6 col-lg-4 col-xl-3">
-								<div class="profile-widget">
-									<div class="doc-img">
-										<a href="#">
-											<img class="img-fluid" alt="User Image"
-												src="{{ asset('images/' . $doctor->image) }}">
-										</a>
-										<a href="javascript:void(0)" class="fav-btn">
-											<i class="far fa-bookmark"></i>
-										</a>
-									</div>
-									<div class="pro-content">
-										<h3 class="title">
-											<a href="#">{{ $doctor->first_name }} {{ $doctor->last_name }}</a>
-											<i class="fas fa-check-circle verified"></i>
-										</h3>
-										<p class="speciality">{{ $doctor->specialization }}</p>
-
-										<ul class="available-info">
-											<li>
-												{{ $doctor->experience }}
-											</li>
-											<li>
-												{{ $doctor->phone }}
-											</li>
-											<li>
-												{{ $doctor->address }}
-											</li>
-										</ul>
-										<div class="row row-sm">
-											<div class="col-6">
-												<a href="#" class="btn view-btn">View Profile</a>
-											</div>
-											<div class="col-6">
-												<a href="{{ route('booking', ['id' => $doctor->user_id]) }}" class="btn book-btn">Book Now</a>
+						@foreach($doctors as $speciality_name => $doctorGroup)
+							<h2>{{ $speciality_name }}</h2> <!-- Speciality Heading -->
+							<div class="row row-grid">
+								@foreach($doctorGroup as $doctor) <!-- Doctors under each speciality -->
+								<div class="col-md-6 col-lg-4 col-xl-3">
+									<div class="profile-widget">
+										<div class="doc-img">
+											<a href="#">
+												<img class="img-fluid" alt="User Image"
+													 src="{{ asset('images/' . $doctor->image) }}">
+											</a>
+											<a href="javascript:void(0)" class="fav-btn">
+												<i class="far fa-bookmark"></i>
+											</a>
+										</div>
+										<div class="pro-content">
+											<h3 class="title">
+												<a href="#">{{ $doctor->first_name }} {{ $doctor->last_name }}</a>
+												<i class="fas fa-check-circle verified"></i>
+											</h3>
+											<p class="speciality">{{ $doctor->speciality_name }}</p>
+					
+											<ul class="available-info">
+												<li>{{ $doctor->experience }}</li>
+												<li>{{ $doctor->phone }}</li>
+												<li>{{ $doctor->address }}</li>
+											</ul>
+											<div class="row row-sm">
+												<div class="col-6">
+													<a href="#" class="btn view-btn">View Profile</a>
+												</div>
+												<div class="col-6">
+													<a href="{{ route('booking', ['id' => $doctor->user_id]) }}" class="btn book-btn">Book Now</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+								@endforeach
 							</div>
-							@endforeach
-						</div>
+						@endforeach
 					</div>
+					
 
 				</div>
 			</div>

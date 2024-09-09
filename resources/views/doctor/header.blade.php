@@ -62,15 +62,22 @@
             <li class="nav-item dropdown has-arrow logged-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                     <span class="user-img">
-                        <img class="rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" width="31"
-                            alt="Darren Elder">
+                        <?php
+                    
+                    
+                        $user = Auth::user();
+    $doctor = $user->doctor; 
+    
+    ?>
+                    {{-- @dd($doctor->image) --}}
+                    <img src="{{ asset('images/' . $doctor->image) }}" alt="User Image">
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="user-header">
                         <div class="avatar avatar-sm">
-                            <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image"
-                                class="avatar-img rounded-circle">
+                            <img src="{{ asset('images/' . $doctor->image) }}" alt="User Image">
+
                         </div>
                         <div class="user-text">
                             <h6> {{ Auth::user()->first_name}} {{ Auth::user()->last_name}}</h6>

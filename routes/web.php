@@ -11,6 +11,7 @@ use App\Http\Controllers\priceController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SpecialitiesController;
+use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\testimonalsController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/adminappointment', [AdminController::class, 'adminappointment'])->name('admin.adminappointment');
 
+    Route::get('/specialities', [SpecialityController::class, 'index'])->name('specialities.index');
+    Route::post('/specialities/store', [SpecialityController::class, 'store'])->name('specialities.store');
+    Route::post('/specialities/update/{id}', [SpecialityController::class, 'update'])->name('specialities.update');
+    Route::post('/specialities/delete/{id}', [SpecialityController::class, 'destroy'])->name('specialities.destroy');
+
+
 });
 
 //doctor
@@ -88,6 +95,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout/{id}', [PatientController::class, 'checkout'])->name('checkout');
     Route::post('/checkout', [PatientController::class, 'sstore'])->name('checkout.store');
     Route::get('/pappointment', [PatientController::class, 'pappointment'])->name('pappointment');
+    Route::post('/profile/update', [PatientController::class, 'updatep'])->name('updateProfile');
+
 });
 
 

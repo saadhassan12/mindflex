@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Speciality;
 use App\Models\User;
 use App\Models\Doctor;
 use Auth;
@@ -36,8 +37,9 @@ class doctorsController extends Controller
     }
     public function createdoctor()
     {
+        $specialities = Speciality::all();
 
-        return view('doctor.create');
+        return view('doctor.create',compact('specialities'));
 
     }
 

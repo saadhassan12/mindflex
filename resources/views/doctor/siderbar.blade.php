@@ -2,7 +2,16 @@
     <div class="widget-profile pro-widget-content">
         <div class="profile-info-widget">
             <a href="#" class="booking-doc-img">
-                <img src="../dassets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+
+                <?php
+                    
+                    
+                    $user = Auth::user();
+$doctor = $user->doctor; 
+
+?>
+                {{-- @dd($doctor->image) --}}
+                <img src="{{ asset('images/' . $doctor->image) }}" alt="User Image">
             </a>
             <div class="profile-det-info">
                 <h3>{{ Auth::user()->first_name}} {{ Auth::user()->last_name}}</h3>
