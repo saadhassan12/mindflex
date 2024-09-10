@@ -18,63 +18,63 @@
         <div class="dashboard-widget">
             <nav class="dashboard-menu">
                 <ul>
-                    <li class="active">
+                    <li class="{{ Route::currentRouteName() == 'patientview' ? 'active' : '' }}">
                         <a href="{{ route('patientview') }}">
                             <i class="fas fa-columns"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
+                    
+                    <li class="{{ Route::currentRouteName() == 'doctorview' ? 'active' : '' }}">
                         <a href="{{ route('doctorview') }}">
-                            <i class="fas fa-user-md"></i> <!-- Changed icon class to a more relevant one -->
+                            <i class="fas fa-user-md"></i>
                             <span>Doctors</span>
                         </a>
                     </li>
-                    <li>
-                        <a  href="{{ route('pappointment') }}">
-                            <i class="fas fa-calendar-check"></i> <!-- Changed icon class to a calendar/checkmark for appointments -->
+                    
+                    <li class="{{ Route::currentRouteName() == 'pappointment' ? 'active' : '' }}">
+                        <a href="{{ route('pappointment') }}">
+                            <i class="fas fa-calendar-check"></i>
                             <span>Appointment</span>
                         </a>
                     </li>
-                    <li>
-                        <a  href="{{ route('exercise') }}">
-                            <i class="fas fa-dumbbell"></i> <!-- Changed icon class to a dumbbell for exercise -->
-                            <span>Exercise</span> <!-- Fixed spelling mistake -->
+                    
+                    <li class="{{ Route::currentRouteName() == 'exercise' ? 'active' : '' }}">
+                        <a href="{{ route('exercise') }}">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Exercise</span>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="favourites.html">
-                            <i class="fas fa-bookmark"></i>
-                            <span>Vr Excercise</span>
-                        </a>
-                    </li> -->
-                    <li>
+                    
+                    <li class="{{ request()->is('chat.html') ? 'active' : '' }}">
                         <a href="chat.html">
                             <i class="fas fa-comments"></i>
                             <span>Message</span>
                             <small class="unread-msg">23</small>
                         </a>
                     </li>
-                    <li>
+                    
+                    <li class="{{ Route::currentRouteName() == 'pprofile' ? 'active' : '' }}">
                         <a href="{{ route('pprofile') }}">
                             <i class="fas fa-user-cog"></i>
                             <span>Profile Settings</span>
                         </a>
                     </li>
-                    <li>
+                    
+                    <li class="{{ Route::currentRouteName() == 'changepass' ? 'active' : '' }}">
                         <a href="{{ route('changepass') }}">
                             <i class="fas fa-lock"></i>
                             <span>Change Password</span>
                         </a>
                     </li>
-                    <li>
-                        <form action="{{ route('adminlogout') }}" method="POST" style="; border: none; background: none; padding: 14px 16px; margin: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center; font-size: 16px;">
+                    
+                        {{-- <form action="{{ route('adminlogout') }}" method="POST" style="; border: none; background: none; padding: 14px 16px; margin: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center; font-size: 16px;">
                             @csrf
                             <button class="dropdown-item" type="submit">
                                 <i class="fas fa-sign-out-alt"></i>
                             <span>Logout</span>
                             </button>
-                        </form>
+                        </form> --}}
                     </li>
                     {{-- <li>
                         <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">

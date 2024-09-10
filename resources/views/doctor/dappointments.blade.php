@@ -101,7 +101,45 @@
 
 		<!-- Footer -->
 		
-@include('footer')
+		<footer style="background-color: #06A3DA; color: #ecf0f1; padding: 40px 0;">
+			<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+				
+				<!-- About Section -->
+				
+				
+				<!-- Contact Information -->
+				<div style="flex: 1; margin-bottom: 20px;">
+					<h4>Contact Us</h4>
+					<p><strong>Phone:</strong> +1 234 567 890</p>
+					<p><strong>Email:</strong> info@Mindflex.com</p>
+					<p><strong>Address:</strong> 123 Karachi ,Pakistan</p>
+				</div>
+				
+				<!-- Quick Links -->
+				<div style="flex: 1; margin-bottom: 20px;">
+					<h4>Quick Links</h4>
+					<ul style="list-style-type: none; padding: 0;">
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Home</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">About Us</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Services</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Contact</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Privacy Policy</a></li>
+					</ul>
+				</div>
+				
+				<!-- Social Media Links -->
+				<div style="flex: 1; margin-bottom: 20px;">
+					<h4>Follow Us</h4>
+					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Facebook</a>
+					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Twitter</a>
+					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Instagram</a>
+				</div>
+				
+			</div>
+			<div style="text-align: center; padding: 20px 0; border-top: 1px solid #34495e;">
+				<p style="margin: 0;">&copy; 2024 Rehab Center. All rights reserved.</p>
+			</div>
+		</footer>
 
 		<!-- /Footer -->
 

@@ -181,147 +181,44 @@
 		<!-- /Page Content -->
 
 		<!-- Footer -->
-		<footer class="footer">
-
-			<!-- Footer Top -->
-			<div class="footer-top">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-3 col-md-6">
-
-							<!-- Footer Widget -->
-							<div class="footer-widget footer-about">
-								<div class="footer-logo">
-									<img src="assets/img/only mindflex 201x52.jpg" alt="logo">
-								</div>
-								<div class="footer-about-content">
-									<p>Unlock the power of your mind with Mindflex, the ultimate brain-training
-										experience that combines focus, concentration, and fun. Dive into a world where
-										your thoughts take control, challenging your mental agility like never before .
-									</p>
-									<div class="social-icon">
-										<ul>
-											<li>
-												<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
-											</li>
-											<li>
-												<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
-											</li>
-											<li>
-												<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-											</li>
-											<li>
-												<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-											</li>
-											<li>
-												<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- /Footer Widget -->
-
-						</div>
-
-						<div class="col-lg-3 col-md-6">
-
-							<!-- Footer Widget -->
-							<!-- <div class="footer-widget footer-menu">
-								<h2 class="footer-title">For Patients</h2>
-								<ul>
-									<li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
-									<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
-									<li><a href="register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
-									<li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a></li>
-									<li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
-								</ul>
-							</div> -->
-							<!-- /Footer Widget -->
-
-						</div>
-
-						<div class="col-lg-3 col-md-6">
-
-							<!-- Footer Widget -->
-							<div class="footer-widget footer-menu">
-								<h2 class="footer-title">For Doctors</h2>
-								<ul>
-									<li><a href="appointments.html"><i class="fas fa-angle-double-right"></i>
-											Appointments</a></li>
-									<li><a href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
-									<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
-									<li><a href="doctor-register.html"><i class="fas fa-angle-double-right"></i>
-											Register</a></li>
-									<li><a href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor
-											Dashboard</a></li>
-								</ul>
-							</div>
-							<!-- /Footer Widget -->
-
-						</div>
-
-						<div class="col-lg-3 col-md-6">
-
-							<!-- Footer Widget -->
-							<div class="footer-widget footer-contact">
-								<h2 class="footer-title">Contact Us</h2>
-								<div class="footer-contact-info">
-									<div class="footer-address">
-										<span><i class="fas fa-map-marker-alt"></i></span>
-										<p> Jinnah univeristy For women ,<br> Karachi, Pakistan</p>
-									</div>
-									<p>
-										<i class="fas fa-phone-alt"></i>
-										+92 34567889 8
-									</p>
-									<p class="mb-0">
-										<i class="fas fa-envelope"></i>
-										mindflex@gmail.com.com
-									</p>
-								</div>
-							</div>
-							<!-- /Footer Widget -->
-
-						</div>
-
-					</div>
+		<footer style="background-color: #06A3DA; color: #ecf0f1; padding: 40px 0;">
+			<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+				
+				<!-- About Section -->
+				
+				
+				<!-- Contact Information -->
+				<div style="flex: 1; margin-bottom: 20px;">
+					<h4>Contact Us</h4>
+					<p><strong>Phone:</strong> +1 234 567 890</p>
+					<p><strong>Email:</strong> info@Mindflex.com</p>
+					<p><strong>Address:</strong> 123 Karachi ,Pakistan</p>
 				</div>
-			</div>
-			<!-- /Footer Top -->
-
-			<!-- Footer Bottom -->
-			<div class="footer-bottom">
-				<div class="container-fluid">
-
-					<!-- Copyright -->
-					<div class="copyright">
-						<div class="row">
-							<div class="col-md-6 col-lg-6">
-								<div class="copyright-text">
-									<!-- <p class="mb-0"><a href="templateshub.net">Templates Hub</a></p> -->
-								</div>
-							</div>
-							<div class="col-md-6 col-lg-6">
-
-								<!-- Copyright Menu -->
-								<div class="copyright-menu">
-									<ul class="policy-menu">
-										<li>This Project is created by</a></li>
-										<li> Bushra Nameera Hiba & Maryam</a></li>
-									</ul>
-								</div>
-								<!-- /Copyright Menu -->
-
-							</div>
-						</div>
-					</div>
-					<!-- /Copyright -->
-
+				
+				<!-- Quick Links -->
+				<div style="flex: 1; margin-bottom: 20px;">
+					<h4>Quick Links</h4>
+					<ul style="list-style-type: none; padding: 0;">
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Home</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">About Us</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Services</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Contact</a></li>
+						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Privacy Policy</a></li>
+					</ul>
 				</div>
+				
+				<!-- Social Media Links -->
+				<div style="flex: 1; margin-bottom: 20px;">
+					<h4>Follow Us</h4>
+					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Facebook</a>
+					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Twitter</a>
+					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Instagram</a>
+				</div>
+				
 			</div>
-			<!-- /Footer Bottom -->
-
+			<div style="text-align: center; padding: 20px 0; border-top: 1px solid #34495e;">
+				<p style="margin: 0;">&copy; 2024 Rehab Center. All rights reserved.</p>
+			</div>
 		</footer>
 		<!-- /Footer -->
 
