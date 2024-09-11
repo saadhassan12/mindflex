@@ -94,10 +94,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-booking', [PatientController::class, 'store'])->name('booking.store');
     Route::post('/book-appointment', [AppointmentController::class, 'store'])->name('appointment.store');
     Route::get('/checkout/{id}', [PatientController::class, 'checkout'])->name('checkout');
-    Route::post('/checkout', [PatientController::class, 'sstore'])->name('checkout.store');
+    Route::post('/checkout', [PatientController::class, 'sstore'])->name('checkoutstore');
     Route::get('/pappointment', [PatientController::class, 'pappointment'])->name('pappointment');
     Route::post('/profile/update', [PatientController::class, 'updatep'])->name('updateProfile');
     Route::get('/doprofile/{id}', [PatientController::class, 'doprofile'])->name('doprofile');
+    Route::get('/bookingsuccess', [PatientController::class, 'bookingsuccess'])->name('bookingsuccess');
+
 });
 
 

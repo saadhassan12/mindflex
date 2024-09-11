@@ -41,7 +41,7 @@
 								<div class="card-body">
 								
 									<!-- Checkout Form -->
-									<form action="{{ route('checkout.store') }}" method="POST">
+									<form action="{{ route('checkoutstore') }}" method="POST">
 										@csrf
 										<!-- Personal Information -->
 										<div class="info-widget">

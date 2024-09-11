@@ -183,23 +183,27 @@ class PatientController extends Controller
     }
     public function sstore(Request $request)
     {
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:15',
-            'payment_method' => 'required|string',
-            'card_name' => 'nullable|string|max:255',
-            'card_number' => 'nullable|string|max:19',
-            'expiry_month' => 'nullable|string|max:2',
-            'expiry_year' => 'nullable|string|max:2',
-            'cvv' => 'nullable|string|max:4',
-            'terms_accept' => 'required|accepted',
-            'patient_id' => 'required',
-            'doctor_id' => 'required',
+        
+       $heck= Checkout::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'payment_method' => $request->payment_method,
+            'card_name' => $request->card_name,
+            'card_number' => encrypt($request->card_number), // Encrypt sensitive data
+            'expiry_month' => $request->expiry_month,
+            'expiry_year' => $request->expiry_year,
+            'cvv' => encrypt($request->cvv), // Encrypt sensitive data
+            'terms_accept' => $request->terms_accept,
+            'patient_id' => $request->patient_id,
+            'doctor_id' => $request->doctor_id,
+            'amount' => '160',
         ]);
-        Checkout::create($validated);
-        return redirect()->route('doctorview');
+
+     
+        
+        return view('patient.bookingsuccess');
     }
     public function pappointment()
     {
@@ -251,5 +255,7 @@ class PatientController extends Controller
         // Pass the doctor's data to the view
         return view('patient.doprofile', compact('doctor'));
     }
+
+    
 }
 

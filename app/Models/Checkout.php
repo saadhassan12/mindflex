@@ -10,20 +10,18 @@ class Checkout extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name', 
-        'last_name', 
-        'email', 
-        'phone', 
-        'card_name', 
-        'card_number', 
-        'expiry_month', 
-        'expiry_year', 
-        'cvv', 
-        'payment_method', 
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'payment_method',
+        'card_name',
+        'card_number',
+        'expiry_month',
+        'expiry_year',
+        'cvv',
         'terms_accept',
-        'doctor_id',
         'patient_id',
-        'amount'
-        // Add other attributes here as needed
+        'doctor_id',
     ];
 }
