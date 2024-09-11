@@ -86,7 +86,7 @@
         
             <div class="form-group ">
                 <label for="age">Age:</label>
-                <input type="number" class="form-control" id="age" name="age" required max="80" oninput="validateAge(this)">
+                <input type="number" class="form-control" id="age" name="age" required max="18" oninput="validateAge(this)">
                 <small class="form-text error" id="ageError"></small>
             </div>
 
@@ -229,10 +229,10 @@
 </html>
 <script>
     function validateAge(input) {
-        const max = 80;
+        const max = 18;
         if (input.value > max) {
             input.value = max;
-            alert('Age cannot be more than 80.');
+            alert('Age cannot be more than 18.');
         }
     }
 </script>

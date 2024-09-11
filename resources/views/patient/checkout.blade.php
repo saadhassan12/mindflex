@@ -140,8 +140,8 @@
 											</div>
 											<!-- /Terms Accept -->
 									
-											<input type="text" name="patient_id" value="{{ auth()->check() ? auth()->id() : '' }}" />
-											<input type="text" name="doctor_id" value="{{ $appointment->doctor_id }}">
+											<input type="hidden" name="patient_id" value="{{ auth()->check() ? auth()->id() : '' }}" />
+											<input type="hidden" name="doctor_id" value="{{ $appointment->doctor_id }}">
 											<!-- Submit Section -->
 											<div class="submit-section mt-4">
 												<button type="submit" class="btn btn-primary submit-btn">Confirm and Pay</button>

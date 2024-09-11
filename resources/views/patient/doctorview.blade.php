@@ -71,7 +71,7 @@
 											</ul>
 											<div class="row row-sm">
 												<div class="col-6">
-													<a href="#" class="btn view-btn">View Profile</a>
+													<a href="{{ route('doprofile',['id' => $doctor->user_id])  }}" class="btn view-btn">View Profile</a>
 												</div>
 												<div class="col-6">
 													<a href="{{ route('booking', ['id' => $doctor->user_id]) }}" class="btn book-btn">Book Now</a>

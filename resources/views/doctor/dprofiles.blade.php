@@ -55,12 +55,12 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="firstName">First Name:</label>
-									<input type="text" class="form-control" id="first_name" name="first_name" required value="{{ $doctorProfile->first_name }}">
+									<input type="text" class="form-control" id="first_name" name="first_name" required readonly value="{{ $doctorProfile->first_name }}">
 									<small class="form-text error" id="firstNameError"></small>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="lastName">Last Name:</label>
-									<input type="text" class="form-control" id="last_name" name="last_name" required value="{{ $doctorProfile->last_name }}">
+									<input type="text" class="form-control" id="last_name" name="last_name" readonly required value="{{ $doctorProfile->last_name }}">
 									<small class="form-text error" id="lastNameError"></small>
 								</div>
 							</div>
@@ -68,12 +68,12 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="age">Age:</label>
-									<input type="number" class="form-control" id="age" name="age" required max="80" oninput="validateAge(this)" value="{{ $doctorProfile->age }}">
+									<input type="number" class="form-control" id="age" name="age" readonly required max="80" oninput="validateAge(this)" value="{{ $doctorProfile->age }}">
 									<small class="form-text error" id="ageError"></small>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="username">Username:</label>
-									<input type="text" class="form-control" id="user_name" name="user_name" required value="{{ $doctorProfile->user_name }}">
+									<input type="text" class="form-control" id="user_name" name="user_name"  readonly required value="{{ $doctorProfile->user_name }}">
 									<small class="form-text error" id="usernameError"></small>
 								</div>
 							</div>
@@ -81,7 +81,7 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="email">Email:</label>
-									<input type="email" class="form-control" id="email" name="email" required  value="{{ $doctorProfile->email }}">
+									<input type="email" class="form-control" id="email" name="email" required readonly  value="{{ $doctorProfile->email }}">
 									<small class="form-text error" id="emailError"></small>
 								</div>
 								{{-- <div class="form-group col-md-6">
@@ -96,7 +96,7 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="gender">Gender:</label>
-									<select class="form-control" id="gender" name="gender" required>
+									<select class="form-control" id="gender" name="gender" required readonly>
 										<option value="">Choose Gender</option>
 										<option value="male" {{ $doctorProfile->gander == 'male' ? 'selected' : '' }}>Male</option>
 										<option value="female" {{ $doctorProfile->gander == 'female' ? 'selected' : '' }}>Female</option>
@@ -106,7 +106,7 @@
 								</div>
 								<div class="form-group col-md-6">
 									<label for="specialization">Specialization:</label>
-									<input type="text" class="form-control" id="specialization" name="specialization" required value="{{ $doctorProfile->specialization }}">
+									<input type="text" class="form-control" id="specialization" readonly name="specialization" required value="{{ $doctorProfile->name }}">
 									<small class="form-text error" id="specializationError"></small>
 								</div>
 							</div>
@@ -114,12 +114,12 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="experience">Experience (Years):</label>
-									<input type="number" class="form-control" id="experience" name="experience" required value="{{ $doctorProfile->experience }}">
+									<input type="number" class="form-control" id="experience" readonly name="experience" required value="{{ $doctorProfile->experience }}">
 									<small class="form-text error" id="experienceError"></small>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="phone">Phone Number:</label>
-									<input type="tel" class="form-control" id="phone" name="phone" required value="{{ $doctorProfile->phone }}">
+									<input type="tel" class="form-control" id="phone" name="phone"  readonly required value="{{ $doctorProfile->phone }}">
 									<small class="form-text error" id="phoneError"></small>
 								</div>
 							</div>
@@ -127,24 +127,24 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="address">Address:</label>
-									<textarea class="form-control" id="address" name="address" rows="3" required>{{ $doctorProfile->address }}</textarea>
+									<textarea class="form-control" id="address" name="address"  readonly rows="3" required>{{ $doctorProfile->address }}</textarea>
 									<small class="form-text error" id="addressError"></small>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="notes">Additional Notes:</label>
-									<textarea class="form-control" id="notes" name="notes" rows="3">{{ $doctorProfile->notes }}</textarea>
+									<textarea class="form-control" id="notes" name="notes" readonly rows="3">{{ $doctorProfile->notes }}</textarea>
 								</div>
 							</div>
 					
 							<div class="row mt-4">
 								<div class="form-group col-md-6">
 									<label for="documents">Doctor's Documents:</label>
-									<input type="file" class="form-control-file" id="documents" name="documents[]" accept=".pdf,.doc,.docx" multiple>
+									<input type="hidden" class="form-control-file" id="documents" readonly name="documents[]" accept=".pdf,.doc,.docx" multiple>
 									<small class="form-text error" id="documentsError"></small>
 							
 									@if(!empty($doctorProfile->documents))
 										<div class="mt-2">
-											<label>Existing Documents:</label>
+											
 											<ul>
 												@foreach(json_decode($doctorProfile->documents) as $document)
 													<li><a href="{{ asset('storage/documents/' . $document) }}" target="_blank">{{ $document }}</a></li>
@@ -156,12 +156,12 @@
 							
 								<div class="form-group col-md-6">
 									<label for="image">Doctor's Image:</label>
-									<input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+									<input type="hidden" class="form-control-file" id="image" readonly name="image" accept="image/*">
 									<small class="form-text error" id="imageError"></small>
 							
 									@if(!empty($doctorProfile->image))
 										<div class="mt-2">
-											<label>Existing Image:</label><br>
+											
 
 											<img class="img-fluid" alt="Doctor's Image"  style="max-width: 150px;"
 																				src="{{ asset('images/' . $doctorProfile->image) }}">

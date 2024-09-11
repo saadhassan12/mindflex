@@ -40,6 +40,7 @@ Route::get('/doctors', [doctorsController::class, 'doctors'])->name('doctors');
 Route::get('/login', [AdminController::class, 'admin_login'])->name('login');
 Route::post('/login', [AdminController::class, 'adminlogin'])->name('login');
 Route::post('/adminlogout', [AdminController::class, 'adminlogout'])->name('adminlogout');
+
 Route::middleware('auth')->group(function () {
     Route::get('/adminhomepage', [AdminController::class, 'homepage'])->name('admin.homepage');
     Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
@@ -56,7 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/pprofile', [PatientController::class, 'profile'])->name('pprofile');
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/adminappointment', [AdminController::class, 'adminappointment'])->name('admin.adminappointment');
-
     Route::get('/specialities', [SpecialityController::class, 'index'])->name('specialities.index');
     Route::post('/specialities/store', [SpecialityController::class, 'store'])->name('specialities.store');
     Route::post('/specialities/update/{id}', [SpecialityController::class, 'update'])->name('specialities.update');
@@ -73,6 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/password-update', [doctorsController::class, 'updatePassword'])->name('password.update');
     Route::get('/dprofile', [doctorsController::class, 'dprofile'])->name('dprofile');
     Route::get('/dappointment', [doctorsController::class, 'dappointment'])->name('dappointment');
+    Route::get('/mypatient', [doctorsController::class, 'mypatient'])->name('mypatient');
+    Route::get('/exercise', [doctorsController::class, 'exercise'])->name('exercise');
 
 });
 
@@ -87,7 +89,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/patientview', [PatientController::class, 'patientview'])->name('patientview');
     Route::get('/doctorview', [PatientController::class, 'doctorview'])->name('doctorview');
     Route::get('/changepass', [PatientController::class, 'changepass'])->name('changepass');
-    Route::get('/exercise', [PatientController::class, 'exercise'])->name('exercise');
     Route::post('/update-password', [PatientController::class, 'updatePassword'])->name('user.update-password');
     Route::get('/booking/{id}', [PatientController::class, 'booking'])->name('booking');
     Route::post('/save-booking', [PatientController::class, 'store'])->name('booking.store');
@@ -96,7 +97,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout', [PatientController::class, 'sstore'])->name('checkout.store');
     Route::get('/pappointment', [PatientController::class, 'pappointment'])->name('pappointment');
     Route::post('/profile/update', [PatientController::class, 'updatep'])->name('updateProfile');
-
+    Route::get('/doprofile/{id}', [PatientController::class, 'doprofile'])->name('doprofile');
 });
 
 

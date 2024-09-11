@@ -20,6 +20,7 @@ class doctorsController extends Controller
     }
     public function doctorhomepage()
     {
+
         return view('doctor.doctorhomepage');
     }
 
@@ -39,7 +40,7 @@ class doctorsController extends Controller
     {
         $specialities = Speciality::all();
 
-        return view('doctor.create',compact('specialities'));
+        return view('doctor.create', compact('specialities'));
 
     }
 
@@ -137,27 +138,55 @@ class doctorsController extends Controller
     {
         $doctorProfile = DB::table('doctors')
             ->join('users', 'doctors.user_id', '=', 'users.id')
-            ->select('doctors.*', 'users.*')
+            ->join('specialities', 'doctors.specialization', '=', 'specialities.id')
+            ->select('doctors.*', 'users.*', 'specialities.name')
             ->where('users.id', auth()->id())
             ->first();
         return view('doctor.dprofiles', compact('doctorProfile'));
     }
 
-
     public function dappointment()
     {
-
         $appointments = DB::table('appointments')
-        ->leftJoin('users as doc', 'appointments.doctor_id', '=', 'doc.id')
-        ->leftJoin('users as pat', 'appointments.patient_id', '=', 'pat.id') 
-        ->select(
-            'appointments.*',
-            'pat.*' // add more patient fields as needed
-        )
-        ->where('appointments.doctor_id', auth()->id())
-        ->get();
-    
-        return view('doctor.dappointments',compact('appointments'));
+            ->leftJoin('users as doc', 'appointments.doctor_id', '=', 'doc.id')
+            ->leftJoin('users as pat', 'appointments.patient_id', '=', 'pat.id')
+            ->select(
+                'appointments.*',
+                'pat.*' // add more patient fields as needed
+            )
+            ->where('appointments.doctor_id', auth()->id())
+            ->get();
 
+        return view('doctor.dappointments', compact('appointments'));
+
+    }
+
+
+    public function mypatient()
+    {
+        $patients = DB::table('appointments')
+            ->leftJoin('users as doc', 'appointments.doctor_id', '=', 'doc.id')
+            ->leftJoin('users as pat', 'appointments.patient_id', '=', 'pat.id')
+            ->select(
+                DB::raw('MAX(appointments.id) as appointment_id'),
+                DB::raw('MAX(appointments.date) as latest_appointment_date'),
+                DB::raw('MAX(pat.first_name) as first_name'),
+                DB::raw('MAX(pat.last_name) as last_name'),
+                DB::raw('MAX(pat.user_name) as user_name'),
+                DB::raw('MAX(pat.age) as age'),
+                DB::raw('MAX(pat.type) as type'),
+                DB::raw('MAX(pat.gander) as gander'),
+                DB::raw('MAX(pat.email) as email'),
+                'appointments.patient_id'
+            )
+            ->where('appointments.doctor_id', auth()->id())
+            ->groupBy('appointments.patient_id') // group by patient_id
+            ->get();
+        return view('doctor.mypatient', compact('patients'));
+    }
+
+    public function exercise()
+    {
+        return view('doctor.exercise');
     }
 }

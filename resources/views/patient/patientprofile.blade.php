@@ -39,12 +39,7 @@
                         </a>
                     </li>
                     
-                    <li class="{{ Route::currentRouteName() == 'exercise' ? 'active' : '' }}">
-                        <a href="{{ route('exercise') }}">
-                            <i class="fas fa-dumbbell"></i>
-                            <span>Exercise</span>
-                        </a>
-                    </li>
+                    
                     
                     <li class="{{ request()->is('chat.html') ? 'active' : '' }}">
                         <a href="chat.html">
@@ -68,14 +63,17 @@
                         </a>
                     </li>
                     
-                        {{-- <form action="{{ route('adminlogout') }}" method="POST" style="; border: none; background: none; padding: 14px 16px; margin: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center; font-size: 16px;">
+                    <li>
+                        <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">
                             @csrf
-                            <button class="dropdown-item" type="submit">
+                            <button type="submit"
+                                style="border: none; background: none; padding: 20px 16px; margin: 0; cursor: pointer; color: inherit; font: inherit; display: flex; align-items: center;     font-size: 16px;margin-right: 10px;width: 16px">
                                 <i class="fas fa-sign-out-alt"></i>
-                            <span>Logout</span>
+                                <span style="margin-left: 16px;">Logout</span>
                             </button>
-                        </form> --}}
+                        </form>
                     </li>
+                    
                     {{-- <li>
                         <form action="{{ route('adminlogout') }}" method="POST" style="display: inline;">
                             @csrf

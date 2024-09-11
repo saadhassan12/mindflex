@@ -173,10 +173,10 @@
 </html>
 <script>
     function validateAge(input) {
-        const max = 80;
+        const max = 18;
         if (input.value > max) {
             input.value = max;
-            alert('Age cannot be more than 80.');
+            alert('Age cannot be more than 18.');
         }
     }
 </script>

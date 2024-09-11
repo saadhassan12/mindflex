@@ -115,10 +115,7 @@ class PatientController extends Controller
     }
 
 
-    public function exercise()
-    {
-        return view('patient.exercise');
-    }
+  
 
     public function updatePassword(Request $request)
     {
@@ -242,5 +239,17 @@ class PatientController extends Controller
     }
 
 
+
+    public function doprofile($id)
+    {
+        // Join the doctors and users table using the user_id
+        $doctor = Doctor::join('users', 'users.id', '=', 'doctors.user_id')
+            ->where('doctors.user_id', $id)
+            ->select('doctors.*', 'users.*') // Select relevant columns
+            ->first();
+
+        // Pass the doctor's data to the view
+        return view('patient.doprofile', compact('doctor'));
+    }
 }
 

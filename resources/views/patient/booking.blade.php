@@ -146,38 +146,46 @@
 	
 			generateDateOptions();
 	
-			// Dummy time slots based on selected date
-			const timeSlots = {
-				'2024-08-28': ['9:00 AM', '10:00 AM', '11:00 AM'],
-				'2024-08-29': ['1:00 PM', '2:00 PM', '3:00 PM'],
-				// Add more dates and times as needed
-			};
+			// Generate time slots dynamically (e.g., from 9 AM to 5 PM with 1-hour intervals)
+			function generateTimeSlots() {
+				const times = [];
+				const startHour = 9; // Start time: 9 AM
+				const endHour = 17; // End time: 5 PM
+				for (let hour = startHour; hour < endHour; hour++) {
+					const timeAMPM = (hour <= 12 ? hour : hour - 12) + ':00 ' + (hour < 12 ? 'AM' : 'PM');
+					times.push(timeAMPM);
+				}
+				return times;
+			}
 	
+			// Listen for date selection
 			datePicker.addEventListener('change', function() {
 				const selectedDate = this.value;
 				hiddenDate.value = selectedDate; // Set hidden input value
-				if (timeSlots[selectedDate]) {
-					timePicker.innerHTML = '<option value="" disabled selected>Select Time</option>'; // Reset time options
-					timeSlots[selectedDate].forEach(time => {
-						const option = document.createElement('option');
-						option.value = time;
-						option.textContent = time;
-						timePicker.appendChild(option);
-					});
-					timePicker.disabled = false; // Enable time picker
-				} else {
-					timePicker.innerHTML = '<option value="" disabled selected>No Time Slots Available</option>';
-					timePicker.disabled = true; // Disable time picker
-				}
+	
+				// Reset time picker options
+				timePicker.innerHTML = '<option value="" disabled selected>Select Time</option>';
+				const timeSlots = generateTimeSlots(); // Generate time slots dynamically
+				timeSlots.forEach(time => {
+					const option = document.createElement('option');
+					option.value = time;
+					option.textContent = time;
+					timePicker.appendChild(option);
+				});
+	
+				timePicker.disabled = false; // Enable time picker
 				submitBtn.disabled = true; // Disable submit button until a time is selected
 			});
 	
+			// Listen for time selection
 			timePicker.addEventListener('change', function() {
 				hiddenTime.value = this.value; // Set hidden input value
 				submitBtn.disabled = false; // Enable submit button
 			});
 		});
 	</script>
+	
+	
 		<!-- /Page Content -->
 
 		<!-- Footer -->
