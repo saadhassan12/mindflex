@@ -198,7 +198,7 @@ class PatientController extends Controller
             'terms_accept' => $request->terms_accept,
             'patient_id' => $request->patient_id,
             'doctor_id' => $request->doctor_id,
-            'amount' => '160',
+            'amount' => 160,
         ]);
 
      
@@ -256,6 +256,6 @@ class PatientController extends Controller
         return view('patient.doprofile', compact('doctor'));
     }
 
-    
+
 }
 

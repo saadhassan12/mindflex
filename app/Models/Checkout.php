@@ -23,5 +23,6 @@ class Checkout extends Model
         'terms_accept',
         'patient_id',
         'doctor_id',
+        'amount',
     ];
 }
