@@ -6,6 +6,7 @@
 @include('patient.head')
 @include('layout.app')
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <body>
 
@@ -161,16 +162,7 @@
 												</div>
 											</div>
 										</div>
-										<script>
-											function shareLink() {
-												const url = "https://www.youtube.com/watch?v=LvW1tOPwTBM";
-												navigator.clipboard.writeText(url).then(() => {
-													alert('Link copied to clipboard!');
-												}).catch(err => {
-													console.error('Failed to copy: ', err);
-												});
-											}
-											</script>
+						
 										<div class="col-12 col-md-6 col-lg-4 d-flex">
 											<div class="card flex-fill">
 												<img alt="Card Image" src="./passets/img/straight leg.jpeg"
@@ -339,10 +331,47 @@
 
 	</div>
 	<!-- /Main Wrapper -->
+	<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="shareModalLabel">Share Video Link</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<label for="shareLinkInput" class="form-label">Copy and share the link:</label>
+							<input type="text" class="form-control" id="shareLinkInput" readonly>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="shareModalcol">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
+
+	<script>
+		function shareLink() {
+			// Set the link to be shared
+			var linkToShare = "https://www.youtube.com/watch?v=Ce3XDuWXXq4";
+			document.getElementById('shareLinkInput').value = linkToShare;
+			
+			// Show the modal
+			var shareModal = new bootstrap.Modal(document.getElementById('shareModal'));
+			shareModal.show();
+
+			var shareModal = new bootstrap.Modal(document.getElementById('shareModalcol'));
+				shareModal.hide();
+		}
+	</script>
 	<!-- jQuery -->
 	<script src="./passets/js/jquery.min.js"></script>
-
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Bootstrap Core JS -->
 	<script src="./passets/js/popper.min.js"></script>
 	<script src="./passets/js/bootstrap.min.js"></script>

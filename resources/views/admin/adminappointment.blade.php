@@ -95,13 +95,13 @@
                                                         <a href="#">
                                                             Dr. {{ $appointment->first_name }} {{
                                                             $appointment->last_name }}
-                                                            <span>{{ $appointment->specialization
+                                                            <span>{{ $appointment->name
                                                                 }}</span>
                                                         </a>
                                                     </h2>
                                                 </td>
                                                 <td>{{
-                                                    ($appointment->specialization)}}
+                                                    ($appointment->name)}}
 
                                                 </td>
                                                 <td>{{

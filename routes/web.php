@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dappointment', [doctorsController::class, 'dappointment'])->name('dappointment');
     Route::get('/mypatient', [doctorsController::class, 'mypatient'])->name('mypatient');
     Route::get('/exercise', [doctorsController::class, 'exercise'])->name('exercise');
+    Route::post('/save-shared-link', [doctorsController::class, 'saveSharedLink']);
 
 });
 

@@ -119,16 +119,18 @@ class AdminController extends Controller
         $appointments = DB::table('appointments')
         ->leftJoin('users as doctor_users', 'appointments.doctor_id', '=', 'doctor_users.id')
         ->leftJoin('doctors', 'doctor_users.id', '=', 'doctors.user_id')
+        ->join('specialities', 'doctors.specialization', '=', 'specialities.id')
         ->leftJoin('users as patient_users', 'appointments.patient_id', '=', 'patient_users.id')
         ->select(
             'appointments.*', 
             'doctor_users.*', 
             'doctors.*', 
             'patient_users.first_name as patient_name', 
-            'patient_users.email as patient_email'
+            'patient_users.email as patient_email',
+            'specialities.name',
         )
         ->get();
-    
+  
     
    
     
