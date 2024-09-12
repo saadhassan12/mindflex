@@ -21,7 +21,17 @@ class doctorsController extends Controller
     public function doctorhomepage()
     {
 
-        return view('doctor.doctorhomepage');
+        $appointments = DB::table('appointments')
+            ->leftJoin('users as doc', 'appointments.doctor_id', '=', 'doc.id')
+            ->leftJoin('users as pat', 'appointments.patient_id', '=', 'pat.id')
+            ->select(
+                'appointments.*',
+                'pat.*' // add more patient fields as needed
+            )
+            ->where('appointments.doctor_id', auth()->id())
+            ->get();
+
+        return view('doctor.doctorhomepage', compact('appointments'));
     }
 
     public function doctors()
@@ -188,5 +198,24 @@ class doctorsController extends Controller
     public function exercise()
     {
         return view('doctor.exercise');
+    }
+
+    public function saveSharedLink(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'link' => 'required|url',
+        ]);
+
+        // Save the shared link in the database
+        DB::table('shared_links')->insert([
+            'patient_id' => $request->patient_id,
+            'link' => $request->link,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return response()->json(['success' => true]);
     }
 }

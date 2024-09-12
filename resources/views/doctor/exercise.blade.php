@@ -40,8 +40,11 @@
 
 				<div class="row">
 					<!-- Profile Sidebar -->
-					@include('patient.patientprofile')
-					<!-- / Profile Sidebar -->
+					<div class="col-md-3 col-lg-4 col-xl-3 theiaStickySidebar">
+                        <!-- Profile Sidebar -->
+                        @include('doctor.siderbar')
+                        <!-- /Profile Sidebar -->
+                    </div>
 
 					<div class="col-md-7 col-lg-8 col-xl-9">
 						<div class="card">
