@@ -64,7 +64,138 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome To Mindflex</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Your Trusted Partner In Rehabilitation</h1>
-                            <a href="appointment.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Appointment</a>
+                            {{-- <a href="appointment.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Appointment</a> --}}
+                            <a href="appointment.html" id="appointment-btn" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Appointment</a>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <br>
+        <p style="color: black;">You have to login first to make an appointment.</p>
+        <div class="popup-buttons">
+            <a href="{{ route('patientlogin') }}">
+                <button class="login-btn">Login</button>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Add JavaScript for the popup behavior -->
+<script>
+    const appointmentBtn = document.getElementById('appointment-btn');
+    const popup = document.getElementById('popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    appointmentBtn.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Get the button's position and size
+        const btnRect = appointmentBtn.getBoundingClientRect();
+        
+        // Position the popup above the button
+        popup.style.top = `${btnRect.top - popup.offsetHeight - 10}px`;
+        popup.style.left = `${btnRect.left}px`;
+        popup.style.display = 'block'; // Show the popup
+    });
+
+    closeBtn.addEventListener('click', function () {
+        popup.style.display = 'none'; // Hide the popup
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === popup) {
+            popup.style.display = 'none'; // Hide the popup
+        }
+    });
+</script>
+
+
+ 
+
+<!-- Add some basic CSS to style the popup -->
+<style>
+ /* Popup container */
+.popup {
+    position: absolute; /* Changed from fixed to absolute to position it near the button */
+    display: none; /* Initially hidden */
+    z-index: 1000;
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 300px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff5a5f;
+}
+
+/* Popup buttons */
+.popup-buttons button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Login button */
+.login-btn {
+    background-color:#06A3DA;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #F57E57;
+}
+
+/* Signup button */
+.signup-btn {
+    background-color: #06A3DA;
+    color: white;
+}
+
+.signup-btn:hover {
+    background-color: #F57E57;
+}
+
+/* Popup animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+</style>
+
                             <a href="{{ route('contact') }}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
                     </div>
@@ -176,7 +307,7 @@
                            
                            
                             
-                            <a href="appointment.php" class="btn btn-primary py-2 px-4 ms-3">Book Now</a>
+                            <a href="{{ route('patientlogin') }}" class="btn btn-primary py-2 px-4 ms-3">Book Now</a>
                         </div>
                         <br>
                        <!-- <p class="text-white">Start Your Path to Recovery Today.</p>  --> 
