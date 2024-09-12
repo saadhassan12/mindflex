@@ -812,80 +812,10 @@
         </script> -->
 
 
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Interface</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
 
-        /* Chatbot button style */
-        .chatbot-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            z-index: 9999;
-        }
-
-        .chatbot-button:hover {
-            color: #06A3DA;
-        }
-
-        /* Chatbot icon style */
-        .chatbot-icon {
-            width: 100%;
-            height: 100%;
-            fill: #06A3DA;
-            transition: fill 0.3s ease;
-        }
-
-        /* Botpress Webchat container positioning */
-        .bp-widget-web {
-            position: fixed !important;
-            bottom: 20px !important;
-            right: 20px !important;
-            z-index: 9998 !important;
-            width: 350px; /* Adjust as needed */
-            height: 190px; /* Adjust as needed */
-        }
-    </style>
-</head>
-<body>
-    
-
-    <!-- Botpress Webchat Embed Code -->
-    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-<script>
-  window.botpressWebChat.init({
-      "composerPlaceholder": "chat with us!",
-      "botConversationDescription": "this bot is created by Mindflex",
-      "botId": "073ae091-2b73-4d40-92d3-01b67eab1e30",
-      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
-      "messagingUrl": "https://messaging.botpress.cloud",
-      "clientId": "073ae091-2b73-4d40-92d3-01b67eab1e30",
-      "webhookId": "7741d6aa-3ad7-49ba-bf6b-9a7ffa8f89bb",
-      "lazySocket": true,
-      "themeName": "prism",
-      "botName": "Assistant",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/4616/4616271.png",
-      "frontendVersion": "v1",
-      "theme": "prism",
-      "themeColor": "#0090ff",
-      "allowedOrigins": []
-  });
-</script>
+        <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+        <script src="https://mediafiles.botpress.cloud/073ae091-2b73-4d40-92d3-01b67eab1e30/webchat/v2.1/config.js"></script> 
+ 
 
     <!-- <script>
         function toggleChatbot() {

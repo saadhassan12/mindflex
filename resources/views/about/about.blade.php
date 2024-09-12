@@ -118,79 +118,8 @@
     
 
 
-<!-- Chatbot button -->
-<button class="chatbot-button" id="chatbot-button" onclick="toggleChatbot()">
-    <img class="chatbot-icon" src="img/chatbot-.png" alt="Chatbot">
-</button>
-
-<!-- Chatbot container -->
-<div class="chatbot-container" id="chatbot-container">
-    <div class="chatbot-header">
-        <span>Chatbot</span>
-        <button class="close-button" onclick="closeChatbot()">X</button>
-    </div>
-    <div class="chatbot-body" id="chatbot-body">
-        <div class="message other">
-            <div class="message-content">
-                Hello! How can I assist you?
-            </div>
-        </div>
-    </div>
-    <div class="chatbot-input">
-        <input type="text" id="chatbot-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
-
-<script>
-    function toggleChatbot() {
-        var chatbotContainer = document.getElementById('chatbot-container');
-        var chatbotButton = document.getElementById('chatbot-button');
-        if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
-            chatbotContainer.style.display = 'block';
-            chatbotButton.style.display = 'none';
-        } else {
-            chatbotContainer.style.display = 'none';
-            chatbotButton.style.display = 'block';
-        }
-    }
-
-    function closeChatbot() {
-        var chatbotContainer = document.getElementById('chatbot-container');
-        var chatbotButton = document.getElementById('chatbot-button');
-        chatbotContainer.style.display = 'none';
-        chatbotButton.style.display = 'block';
-    }
-
-    function sendMessage() {
-        var messageInput = document.getElementById('chatbot-input').value.trim();
-        if (messageInput !== '') {
-            appendMessage('self', messageInput);
-            document.getElementById('chatbot-input').value = '';
-            // Here you would typically send the message to your backend or process it
-            // with your chatbot and receive a response.
-            // For demonstration purposes, I'll simulate a response after a delay.
-            setTimeout(function() {
-                var response = "This is a placeholder response from the bot.";
-                appendMessage('other', response);
-            }, 1000);
-        }
-    }
-
-    function appendMessage(sender, message) {
-        var chatBody = document.getElementById('chatbot-body');
-        var messageClass = sender === 'self' ? 'self' : 'other';
-        var messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', messageClass);
-        var messageContent = document.createElement('div');
-        messageContent.classList.add('message-content');
-        messageContent.textContent = message;
-        messageDiv.appendChild(messageContent);
-        chatBody.appendChild(messageDiv);
-        chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
-    }
-</script>
-
+<script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+<script src="https://mediafiles.botpress.cloud/073ae091-2b73-4d40-92d3-01b67eab1e30/webchat/v2.1/config.js"></script> 
 @include('footer')
 
 
