@@ -45,7 +45,7 @@
 								<div class="success-cont">
 									<i class="fas fa-check"></i>
 									<h3>Appointment booked Successfully!</h3>
-									<a href="{{ route('patientview') }}" class="btn btn-primary view-inv-btn">View DashBord</a>
+									<a href="{{ route('patientview') }}" class="btn btn-primary view-inv-btn">View Dashboard</a>
 								</div>
 							</div>
 						</div>
