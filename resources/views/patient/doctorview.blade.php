@@ -43,48 +43,57 @@
 					<!-- Page Content -->
 					<div class="col-md-7 col-lg-8 col-xl-9">
 						@foreach($doctors as $speciality_name => $doctorGroup)
-							<h2>{{ $speciality_name }}</h2> <!-- Speciality Heading -->
-							<div class="row row-grid">
-								@foreach($doctorGroup as $doctor) <!-- Doctors under each speciality -->
-								<div class="col-md-6 col-lg-4 col-xl-3">
-									<div class="profile-widget">
-										<div class="doc-img">
-											<a href="#">
-												<img class="img-fluid" alt="User Image"
-													 src="{{ asset('images/' . $doctor->image) }}">
-											</a>
-											<a href="javascript:void(0)" class="fav-btn">
-												<i class="far fa-bookmark"></i>
-											</a>
-										</div>
-										<div class="pro-content">
-											<h3 class="title">
-												<a href="#">{{ $doctor->first_name }} {{ $doctor->last_name }}</a>
-												<i class="fas fa-check-circle verified"></i>
-											</h3>
-											<p class="speciality">{{ $doctor->speciality_name }}</p>
-					
-											<ul class="available-info">
-												<li>{{ $doctor->experience }}</li>
-												<li>{{ $doctor->phone }}</li>
-												<li>{{ $doctor->address }}</li>
-											</ul>
-											<div class="row row-sm">
-												<div class="col-6">
-													<a href="{{ route('doprofile',['id' => $doctor->user_id])  }}" class="btn view-btn">View Profile</a>
-												</div>
-												<div class="col-6">
-													<a href="{{ route('booking', ['id' => $doctor->user_id]) }}" class="btn book-btn">Book Now</a>
-												</div>
+						<h2>{{ $speciality_name }}</h2> <!-- Speciality Heading -->
+						<div class="row row-grid">
+							@foreach($doctorGroup as $doctor)
+							<!-- Doctors under each speciality -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="#">
+											<img class="img-fluid" alt="User Image"
+												src="{{ asset('images/' . $doctor->image) }}">
+										</a>
+										<a href="javascript:void(0)" class="fav-btn">
+											<i class="far fa-bookmark"></i>
+										</a>
+									</div>
+									<div class="pro-content">
+										<h3 class="title">
+											<a href="#">{{ $doctor->first_name }} {{ $doctor->last_name }}</a>
+											<i class="fas fa-check-circle verified"></i>
+										</h3>
+										<p class="speciality">{{ $doctor->speciality_name }}</p>
+
+										<ul class="available-info">
+											<li>{{ $doctor->experience }}</li>
+											<li>{{ $doctor->phone }}</li>
+											<li>{{ $doctor->address }}</li>
+										</ul>
+										<div class="row row-sm">
+											<div class="col-6">
+												<a href="{{ route('doprofile',['id' => $doctor->user_id]) }}"
+													class="btn view-btn">View Profile</a>
+											</div>
+											<div class="col-6">
+												<a href="{{ route('booking', ['id' => $doctor->user_id]) }}"
+													class="btn book-btn">Book Now</a>
+											</div>
+											<!-- Add Message Button -->
+											<div class="col-12 mt-2">
+												<button class="btn message-btn"
+													data-doctor-id="{{ $doctor->user_id }}">Message</button>
 											</div>
 										</div>
 									</div>
 								</div>
-								@endforeach
 							</div>
+							@endforeach
+						</div>
 						@endforeach
 					</div>
-					
+
+
 
 				</div>
 			</div>
@@ -94,11 +103,12 @@
 
 		<!-- Footer -->
 		<footer style="background-color: #06A3DA; color: #ecf0f1; padding: 40px 0;">
-			<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
-				
+			<div
+				style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+
 				<!-- About Section -->
-				
-				
+
+
 				<!-- Contact Information -->
 				<div style="flex: 1; margin-bottom: 20px;">
 					<h4>Contact Us</h4>
@@ -106,7 +116,7 @@
 					<p><strong>Email:</strong> info@Mindflex.com</p>
 					<p><strong>Address:</strong> 123 Karachi ,Pakistan</p>
 				</div>
-				
+
 				<!-- Quick Links -->
 				<div style="flex: 1; margin-bottom: 20px;">
 					<h4>Quick Links</h4>
@@ -118,7 +128,7 @@
 						<li><a href="#" style="color: #ecf0f1; text-decoration: none;">Privacy Policy</a></li>
 					</ul>
 				</div>
-				
+
 				<!-- Social Media Links -->
 				<div style="flex: 1; margin-bottom: 20px;">
 					<h4>Follow Us</h4>
@@ -126,7 +136,7 @@
 					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Twitter</a>
 					<a href="#" style="color: #ecf0f1; text-decoration: none; margin-right: 15px;">Instagram</a>
 				</div>
-				
+
 			</div>
 			<div style="text-align: center; padding: 20px 0; border-top: 1px solid #34495e;">
 				<p style="margin: 0;">&copy; 2024 Rehab Center. All rights reserved.</p>
@@ -150,6 +160,38 @@
 
 	<!-- Custom JS -->
 	<script src="assets/js/script.js"></script>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+        $('.message-btn').on('click', function() {
+            var doctorId = $(this).data('doctor-id');
+            $.ajax({
+                url: "{{ route('start.chat') }}",
+                method: 'POST',
+                data: {
+
+                    doctor_id: doctorId,
+                    patient_id: "{{ auth()->id() }}",
+                    _token: "{{ csrf_token() }}"
+                },
+
+				
+				
+                success: function(response) {
+                    var chatUrl = `{{ url('chat') }}/${response.session}`;
+                    window.location.href = chatUrl;
+                },
+				
+                error: function(xhr) {
+                    console.log('Error:', xhr.responseText);
+                }
+            });
+        });
+    });
+	</script>
 
 </body>
 

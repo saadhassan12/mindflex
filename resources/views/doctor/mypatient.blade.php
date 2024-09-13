@@ -38,35 +38,48 @@
 
                     <!-- Dynamic Content with foreach -->
                     @foreach($patients as $patient)
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="card widget-profile pat-widget-profile">
-                                <div class="card-body">
-                                    <div class="pro-widget-content">
-                                        <div class="profile-info-widget">
-                                            <a href="#" class="booking-doc-img">
-												<img src="./passets/img/patients/images.png" alt="User Image">
-                                            </a>
-                                            <div class="profile-det-info">
-                                                <h3>{{ $patient->first_name }} {{ $patient->last_name }}</h3>
-                                                <div class="patient-details">
-                                                    <h5><b>Patient ID :</b> {{ $patient->patient_id }}</h5>
-                                                    <h5 class="mb-0"> {{ $patient->user_name }}</h5>
-                                                </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card widget-profile pat-widget-profile">
+                            <div class="card-body">
+                                <div class="pro-widget-content">
+                                    <div class="profile-info-widget">
+                                        <a href="#" class="booking-doc-img">
+                                            <img src="./passets/img/patients/images.png" alt="User Image">
+                                        </a>
+                                        <div class="profile-det-info">
+                                            <h3>{{ $patient->first_name }} {{ $patient->last_name }}</h3>
+                                            <div class="patient-details">
+                                                <h5><b>Patient ID :</b> {{ $patient->patient_id }}</h5>
+                                                <h5 class="mb-0">{{ $patient->user_name }}</h5>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="patient-info">
-                                        <ul>
-                                            <li>Type <span>{{ $patient->type }}</span></li>
-                                            <li>Age <span>{{ $patient->age }} Years</span></li>
-											<li>Gender <span> {{ $patient->gander }}</span></il>
-                                            <li>Email <span>{{ $patient->email }}</span></li>
-                                        </ul>
-                                    </div>
+                                </div>
+                                <div class="patient-info">
+                                    <ul>
+                                        <li>Type <span>{{ $patient->type }}</span></li>
+                                        <li>Age <span>{{ $patient->age }} Years</span></li>
+                                        <li>Gender <span>{{ $patient->gander }}</span></li>
+                                        <li>Email <span>{{ $patient->email }}</span></li>
+                                    </ul>
+                                </div>
+                
+                                <!-- Add a Message Button -->
+                                <div class="text-center mt-3">
+                                    <form action="{{ route('start.chat') }}" method="POST">
+                                        @csrf
+                                        <!-- Doctor ID, assuming doctor is authenticated -->
+                                        <input type="hidden" name="doctor_id" value="{{ auth()->user()->id }}">
+                                        <!-- Patient ID -->
+                                        <input type="hidden" name="patient_id" value="{{ $patient->patient_id }}">
+                                        <button type="submit" class="btn btn-primary">Message</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
+                @endforeach
+                
 
                 </div>
             </div>

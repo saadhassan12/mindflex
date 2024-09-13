@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\appointmentController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\doctorsController;
 use App\Http\Controllers\HomeController;
@@ -76,6 +77,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypatient', [doctorsController::class, 'mypatient'])->name('mypatient');
     Route::get('/exercise', [doctorsController::class, 'exercise'])->name('exercise');
     Route::post('/save-shared-link', [doctorsController::class, 'saveSharedLink']);
+    Route::post('/start-chat', [ChatController::class, 'startChat'])->name('start.chat');
+    Route::any('/chat/{session}', [ChatController::class, 'viewChat'])->name('chat.view');
+    Route::post('/send-message', [ChatController::class, 'sendMessage'])->name('send.message');
 
 });
 
@@ -100,7 +104,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/update', [PatientController::class, 'updatep'])->name('updateProfile');
     Route::get('/doprofile/{id}', [PatientController::class, 'doprofile'])->name('doprofile');
     Route::get('/bookingsuccess', [PatientController::class, 'bookingsuccess'])->name('bookingsuccess');
-
+    Route::post('/start-chat', [ChatController::class, 'startChat'])->name('start.chat');
+    Route::get('/chat/{session}', [ChatController::class, 'viewChat'])->name('chat.view');
 });
 
 
